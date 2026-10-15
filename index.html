@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lúa Dulce - Un Ritual Para el Alma | Repostería Artesanal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FAF7F2',
+                            100: '#F5EFE6',
+                            200: '#E8DFD1',
+                            300: '#D9CBB7'
+                        },
+                        blush: {
+                            50: '#FFF5F5',
+                            100: '#FDE8E8',
+                            200: '#F9D2D2',
+                            300: '#F2B0B0',
+                            500: '#E28B8B'
+                        },
+                        terracotta: {
+                            400: '#D9826C',
+                            500: '#C86B52',
+                            600: '#B0543B',
+                            800: '#6E2E1E'
+                        },
+                        gold: {
+                            300: '#E8CB8B',
+                            400: '#D4AF37',
+                            500: '#AA8828'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF7F2;
+            color: #4A3E3D;
+        }
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .hero-pattern {
+            background-color: #FAF7F2;
+            background-image: radial-gradient(#E8DFD1 0.75px, transparent 0.75px), radial-gradient(#E8DFD1 0.75px, #FAF7F2 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0,15px 15px;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF7F2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D9CBB7;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C86B52;
+        }
+    </style>
+</head>
+<body class="bg-cream-50 text-stone-800 antialiased flex flex-col min-h-screen">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-40 bg-cream-50/90 backdrop-blur-md border-b border-cream-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-terracotta-500/10 flex items-center justify-center border border-terracotta-400/30 group-hover:bg-terracotta-500/20 transition-all">
+                    <i class="fa-solid fa-moon text-terracotta-500 text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-serif text-2xl font-bold tracking-wider text-stone-900 block leading-none">LÚA DULCE</span>
+                    <span class="text-[9px] tracking-[0.25em] text-terracotta-600 font-medium uppercase block mt-1">Ritual Para el Alma</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 font-medium text-stone-700 text-sm tracking-wide">
+                <a href="#inicio" class="hover:text-terracotta-500 transition-colors">Inicio</a>
+                <a href="#catalogo" class="hover:text-terracotta-500 transition-colors">Menú / Catálogo</a>
+                <a href="#nosotros" class="hover:text-terracotta-500 transition-colors">Sobre Nosotros</a>
+                <a href="#experiencia" class="hover:text-terracotta-500 transition-colors">El Ritual</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button id="openCartBtn" class="relative p-2.5 rounded-full hover:bg-cream-200/50 text-stone-800 transition-all focus:outline-none" aria-label="Ver Carrito">
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                    <span id="cartBadge" class="absolute top-0 right-0 w-5 h-5 bg-terracotta-500 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-md opacity-0 transition-opacity">0</span>
+                </button>
+                <a href="#catalogo" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-terracotta-500 hover:bg-terracotta-600 text-white text-sm font-medium shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5">
+                    <span>Hacer Pedido</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-stone-700 hover:bg-cream-100">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-cream-50 border-b border-cream-200 px-4 py-4 space-y-3">
+            <a href="#inicio" class="block py-2 text-stone-800 font-medium hover:text-terracotta-500">Inicio</a>
+            <a href="#catalogo" class="block py-2 text-stone-800 font-medium hover:text-terracotta-500">Menú / Catálogo</a>
+            <a href="#nosotros" class="block py-2 text-stone-800 font-medium hover:text-terracotta-500">Sobre Nosotros</a>
+            <a href="#experiencia" class="block py-2 text-stone-800 font-medium hover:text-terracotta-500">El Ritual</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative hero-pattern pt-12 pb-20 md:py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-6 text-center md:text-left z-10">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blush-100 border border-blush-200 text-terracotta-600 text-xs font-semibold tracking-wider uppercase">
+                        <i class="fa-solid fa-sparkles text-gold-400"></i> Repostería Artesanal
+                    </div>
+                    
+                    <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight text-stone-900">
+                        Un Ritual <br>
+                        <span class="italic font-normal text-terracotta-500">Para el Alma</span>
+                    </h1>
+                    
+                    <p class="text-stone-600 text-base sm:text-lg max-w-lg mx-auto md:mx-0 font-normal leading-relaxed">
+                        Galletas estilo New York, conchas temáticas, cupcakes horneados y pan de muerto elaborados diariamente con ingredientes de selección.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
+                        <a href="#catalogo" class="px-8 py-4 rounded-full bg-terracotta-500 hover:bg-terracotta-600 text-white font-medium shadow-lg hover:shadow-xl transition-all text-center transform hover:-translate-y-0.5">
+                            Explorar Menú
+                        </a>
+                        <a href="#nosotros" class="px-8 py-4 rounded-full bg-cream-100 hover:bg-cream-200 text-stone-800 font-medium border border-cream-300 transition-all text-center">
+                            Conócenos
+                        </a>
+                    </div>
+
+                    <div class="pt-6 border-t border-cream-200/80 flex items-center justify-center md:justify-start gap-8 text-stone-600 text-xs sm:text-sm">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-wheat-awn text-terracotta-400"></i> 100% Artesanal
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-heart text-blush-500"></i> Con Amor
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-truck-fast text-gold-500"></i> Envíos Locales
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative flex justify-center">
+                    <div class="relative w-full max-w-md aspect-square rounded-full p-4 bg-gradient-to-tr from-terracotta-400/20 via-blush-200/40 to-cream-200 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&q=80&w=800" 
+                             alt="Galletas Lúa Dulce" 
+                             class="w-full h-full object-cover rounded-full shadow-inner border-4 border-white"
+                             onerror="this.src='https://placehold.co/800x800/E8DFD1/6E2E1E?text=Lua+Dulce+Reposteria'">
+                        
+                        <div class="absolute -bottom-2 -left-2 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-cream-200 flex items-center gap-3" style="animation-duration: 4s;">
+                            <div class="w-10 h-10 rounded-full bg-blush-100 flex items-center justify-center text-terracotta-500 font-bold">
+                                🍪
+                            </div>
+                            <div>
+                                <p class="text-xs text-stone-500">Favorita</p>
+                                <p class="text-sm font-bold font-serif text-stone-900">Galleta Clásica — $20 MXN</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALOGO -->
+    <section id="catalogo" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-terracotta-500 font-semibold tracking-widest text-xs uppercase">Nuestra Selección</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-stone-900 mt-2">Catálogo de Productos</h2>
+                <p class="text-stone-600 mt-3 text-sm sm:text-base">Selecciona por pieza, media docena o docena. <span class="font-semibold text-terracotta-600">(Máximo 60 piezas por pedido)</span></p>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12" id="categoryFilters">
+                <button data-category="all" class="filter-btn active px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-terracotta-500 text-white shadow-sm">
+                    Todos
+                </button>
+                <button data-category="galletas" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-cream-100 text-stone-700 hover:bg-cream-200">
+                    Galletas NY
+                </button>
+                <button data-category="conchas" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-cream-100 text-stone-700 hover:bg-cream-200">
+                    Conchas
+                </button>
+                <button data-category="cupcakes" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-cream-100 text-stone-700 hover:bg-cream-200">
+                    Cupcakes
+                </button>
+                <button data-category="pan-muerto" class="filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-cream-100 text-stone-700 hover:bg-cream-200">
+                    Pan de Muerto
+                </button>
+            </div>
+
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dynamic Items Inserted via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section id="nosotros" class="py-20 bg-cream-100/60 border-y border-cream-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&q=80&w=800" 
+                         alt="Proceso artesanal Lúa Dulce" 
+                         class="rounded-3xl shadow-xl w-full h-[450px] object-cover"
+                         onerror="this.src='https://placehold.co/800x600/D9CBB7/4A3E3D?text=Proceso+Artesanal'">
+                    <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-terracotta-500 rounded-3xl p-6 text-white hidden sm:flex flex-col justify-between shadow-lg">
+                        <i class="fa-solid fa-heart text-3xl opacity-80"></i>
+                        <div>
+                            <p class="font-serif text-2xl font-bold">100%</p>
+                            <p class="text-xs uppercase tracking-wider opacity-90">Hecho a mano cada mañana</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <span class="text-terracotta-500 font-semibold tracking-widest text-xs uppercase">Sobre Nosotros</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl font-bold text-stone-900 leading-tight">
+                        Horneamos Recuerdos, <br>
+                        <span class="italic font-normal text-terracotta-500">Transformamos Momentos</span>
+                    </h2>
+                    <p class="text-stone-600 leading-relaxed text-sm sm:text-base">
+                        En <strong>Lúa Dulce</strong> creemos que disfrutar un postre no es solo comer algo dulce, es regalarte una pausa en el día. Es un ritual de calma, gozo y gratitud.
+                    </p>
+                    <p class="text-stone-600 leading-relaxed text-sm sm:text-base">
+                        Desde nuestras crujientes y suaves galletas estilo New York cargadas de relleno, hasta la delicadeza de nuestras conchas artesanales y panecillos; cada pieza es elaborada diariamente de forma artesanal sin conservadores.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-2xl bg-white border border-cream-200">
+                            <h3 class="font-serif font-bold text-lg text-stone-900">Ingredientes Naturales</h3>
+                            <p class="text-xs text-stone-500 mt-1">Mantequilla pura, chocolate de calidad y extractos naturales.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-white border border-cream-200">
+                            <h3 class="font-serif font-bold text-lg text-stone-900">Diseño Exclusivo</h3>
+                            <p class="text-xs text-stone-500 mt-1">Detalles cuidados para regalar o consentirte en momentos especiales.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EL RITUAL / EXPERIENCIA -->
+    <section id="experiencia" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <span class="text-terracotta-500 font-semibold tracking-widest text-xs uppercase">¿Cómo Funciona?</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 mt-1">Tu Pedido en 3 Pasos</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 rounded-2xl bg-cream-50 border border-cream-200 space-y-3">
+                    <div class="w-12 h-12 rounded-full bg-blush-100 text-terracotta-500 font-serif font-bold text-xl flex items-center justify-center mx-auto">1</div>
+                    <h3 class="font-serif text-xl font-bold text-stone-900">Selecciona tus Productos</h3>
+                    <p class="text-xs text-stone-600 leading-relaxed">Elige piezas individuales, medias docenas o docenas completas (máx. 60 pzas).</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-cream-50 border border-cream-200 space-y-3">
+                    <div class="w-12 h-12 rounded-full bg-blush-100 text-terracotta-500 font-serif font-bold text-xl flex items-center justify-center mx-auto">2</div>
+                    <h3 class="font-serif text-xl font-bold text-stone-900">Confirma por WhatsApp</h3>
+                    <p class="text-xs text-stone-600 leading-relaxed">Envía tu lista formateada para acordar la fecha y punto de entrega.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-cream-50 border border-cream-200 space-y-3">
+                    <div class="w-12 h-12 rounded-full bg-blush-100 text-terracotta-500 font-serif font-bold text-xl flex items-center justify-center mx-auto">3</div>
+                    <h3 class="font-serif text-xl font-bold text-stone-900">Disfruta tu Ritual</h3>
+                    <p class="text-xs text-stone-600 leading-relaxed">Recibe tus postres recién horneados y disfruta un momento de calma.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-stone-900 text-cream-100 mt-auto pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-stone-800">
+                <div class="space-y-4 md:col-span-2">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-terracotta-500/20 flex items-center justify-center border border-terracotta-500/40">
+                            <i class="fa-solid fa-moon text-terracotta-400 text-lg"></i>
+                        </div>
+                        <span class="font-serif text-2xl font-bold tracking-wider text-white">LÚA DULCE</span>
+                    </div>
+                    <p class="text-stone-400 text-sm max-w-sm leading-relaxed">
+                        Repostería hecha a mano. Horneamos recuerdos para regalarte una pausa llena de sabor y gratitud.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-white mb-4">Navegación</h4>
+                    <ul class="space-y-2 text-sm text-stone-400">
+                        <li><a href="#inicio" class="hover:text-terracotta-400 transition-colors">Inicio</a></li>
+                        <li><a href="#catalogo" class="hover:text-terracotta-400 transition-colors">Catálogo</a></li>
+                        <li><a href="#nosotros" class="hover:text-terracotta-400 transition-colors">Sobre Nosotros</a></li>
+                        <li><a href="#experiencia" class="hover:text-terracotta-400 transition-colors">El Ritual</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-white mb-4">Contacto & Pedidos</h4>
+                    <ul class="space-y-2 text-sm text-stone-400">
+                        <li class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-terracotta-400"></i> Pedidos vía WhatsApp</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-terracotta-400"></i> Envíos locales disponibles</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-clock text-terracotta-400"></i> Horario: 9:00 AM - 7:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
+                <p>&copy; 2026 Lúa Dulce - Un Ritual Para el Alma. Todos los derechos reservados.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-stone-400">Términos</a>
+                    <a href="#" class="hover:text-stone-400">Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CARRITO DRAWER -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+        <div id="cartBackdrop" class="absolute inset-0 bg-stone-900/50 backdrop-blur-sm transition-opacity opacity-0"></div>
+
+        <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+            <div id="cartPanel" class="pointer-events-auto w-screen max-w-md transform transition-transform translate-x-full bg-cream-50 shadow-2xl flex flex-col">
+                
+                <div class="px-6 py-6 bg-white border-b border-cream-200 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-bag-shopping text-terracotta-500 text-xl"></i>
+                        <h2 class="font-serif text-2xl font-bold text-stone-900" id="slide-over-title">Tu Pedido</h2>
+                    </div>
+                    <button id="closeCartBtn" class="p-2 text-stone-400 hover:text-stone-600 rounded-full hover:bg-cream-100">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Capacidad / Límite de 60 piezas -->
+                <div class="px-6 py-3 bg-cream-100 border-b border-cream-200 flex items-center justify-between text-xs text-stone-700">
+                    <span>Límite por pedido:</span>
+                    <span id="limitIndicator" class="font-bold text-terracotta-600">0 / 60 piezas</span>
+                </div>
+
+                <div class="flex-1 overflow-y-auto p-6 space-y-4" id="cartItemsContainer">
+                    <!-- Dynamic Cart Items -->
+                </div>
+
+                <div class="p-6 bg-white border-t border-cream-200 space-y-4">
+                    <div class="flex justify-between items-center text-stone-900 font-serif text-xl font-bold">
+                        <span>Total Est.</span>
+                        <span id="cartTotal">$0.00 MXN</span>
+                    </div>
+                    <p class="text-xs text-stone-500">Los costos finales de envío se acordarán por WhatsApp al confirmar tu dirección.</p>
+
+                    <button id="checkoutBtn" class="w-full py-4 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>Enviar Pedido a WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-stone-900 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300">
+        <i id="toastIcon" class="fa-solid fa-circle-info text-terracotta-400"></i>
+        <span id="toastMsg" class="text-xs sm:text-sm font-medium"></span>
+    </div>
+
+    <script>
+        const MAX_PIECES_PER_ORDER = 60;
+
+        // Products List
+        const products = [
+            // GALLETAS
+            {
+                id: 1,
+                name: "Galleta Clásica",
+                category: "galletas",
+                price: 20,
+                description: "La tradicional con mantequilla pura y abundantes chispas de chocolate.",
+                image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 2,
+                name: "Galleta Apple Pie",
+                category: "galletas",
+                price: 22,
+                description: "Deliciosa combinación de manzana caramelizada, canela suave y cubierta crujiente.",
+                image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 3,
+                name: "Galleta Nube de Naranja",
+                category: "galletas",
+                price: 22,
+                description: "Masa ligera infusionada con ralladura y aroma natural de naranja.",
+                image: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 4,
+                name: "Galleta Brownie",
+                category: "galletas",
+                price: 22,
+                description: "Textura suave e intensa con cacao semiamargo.",
+                image: "https://images.unsplash.com/photo-1607920591413-4ec007e70023?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 5,
+                name: "Galleta Red Velvet",
+                category: "galletas",
+                price: 25,
+                description: "Masa roja aterciopelada rellena con centro suave de queso crema.",
+                image: "https://images.unsplash.com/photo-1618897996318-5a901fa6ca71?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 6,
+                name: "Galleta Choco-Avellana",
+                category: "galletas",
+                price: 28,
+                description: "Masa de cacao semiamargo rellena con crema de avellana tostada.",
+                image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=600"
+            },
+
+            // CONCHAS
+            {
+                id: 7,
+                name: "Concha Tradicional",
+                category: "conchas",
+                price: 18,
+                description: "Pan esponjoso estilo brioche de mantequilla con costra crujiente de vainilla o chocolate.",
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 8,
+                name: "Concha Talavera",
+                category: "conchas",
+                price: 20,
+                description: "Diseño decorativo inspirado en los patrones artesanales de Talavera.",
+                image: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 9,
+                name: "Snoopyconcha",
+                category: "conchas",
+                price: 22,
+                description: "Edición especial con diseño temático de la carita de Snoopy moldeado a mano.",
+                image: "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 10,
+                name: "Concha Harry Potter",
+                category: "conchas",
+                price: 22,
+                description: "Concha temática con detalles mágicos y pasta especial.",
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=600"
+            },
+
+            // CUPCAKES
+            {
+                id: 11,
+                name: "Cupcake de Vainilla",
+                category: "cupcakes",
+                price: 16,
+                description: "Pan esponjoso de vainilla natural con cobertura cremosa.",
+                image: "https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 12,
+                name: "Cupcake de Chocolate",
+                category: "cupcakes",
+                price: 18,
+                description: "Bizcocho húmedo de chocolate con suave betún de cacao.",
+                image: "https://images.unsplash.com/photo-1587668178277-295251f900ce?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 13,
+                name: "Cupcake de Limón",
+                category: "cupcakes",
+                price: 18,
+                description: "Sabor cítrico balanceado con cobertura ligera de merengue suave.",
+                image: "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 14,
+                name: "Cupcake de Café",
+                category: "cupcakes",
+                price: 20,
+                description: "Infusión de café de grano con cobertura de crema mocaccino.",
+                image: "https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&q=80&w=600"
+            },
+
+            // PAN DE MUERTO
+            {
+                id: 15,
+                name: "Pan de Muerto Tradicional",
+                category: "pan-muerto",
+                price: 22,
+                description: "Pan artesanal suave esponjado con esencia natural de azahar y mantequilla.",
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 16,
+                name: "Pan de Muerto Relleno",
+                category: "pan-muerto",
+                price: 30,
+                description: "Relleno gourmet de crema de nata, chocolate o avellana cremosa.",
+                image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&q=80&w=600"
+            }
+        ];
+
+        let cart = [];
+
+        // DOM Elements
+        const productGrid = document.getElementById('productGrid');
+        const cartDrawer = document.getElementById('cartDrawer');
+        const cartBackdrop = document.getElementById('cartBackdrop');
+        const cartPanel = document.getElementById('cartPanel');
+        const openCartBtn = document.getElementById('openCartBtn');
+        const closeCartBtn = document.getElementById('closeCartBtn');
+        const cartItemsContainer = document.getElementById('cartItemsContainer');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartBadge = document.getElementById('cartBadge');
+        const limitIndicator = document.getElementById('limitIndicator');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toastMsg');
+
+        // Toast message
+        function showToast(message) {
+            toastMsg.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Get total pieces currently in cart
+        function getTotalCartPieces() {
+            return cart.reduce((sum, item) => sum + item.quantity, 0);
+        }
+
+        // Render Products (Single Price display at the bottom + Quantity selector options)
+        function renderProducts(category = 'all') {
+            const filteredProducts = category === 'all' 
+                ? products 
+                : products.filter(p => p.category === category);
+
+            productGrid.innerHTML = filteredProducts.map(product => `
+                <div class="bg-cream-50 rounded-3xl border border-cream-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative overflow-hidden aspect-4/3">
+                        <img src="${product.image}" 
+                             alt="${product.name}" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/600x400/E8DFD1/6E2E1E?text=Lua+Dulce'">
+                    </div>
+
+                    <div class="p-6 flex flex-col flex-1 justify-between space-y-4">
+                        <div>
+                            <h3 class="font-serif text-2xl font-bold text-stone-900 group-hover:text-terracotta-500 transition-colors">${product.name}</h3>
+                            <p class="text-xs text-stone-600 mt-2 leading-relaxed">${product.description}</p>
+                        </div>
+
+                        <!-- Single Price Display at Bottom -->
+                        <div class="pt-3 border-t border-cream-200/80">
+                            <div class="flex items-baseline justify-between mb-3">
+                                <span class="text-[10px] uppercase font-semibold text-stone-400 tracking-wider">Precio Unitario</span>
+                                <span class="font-serif font-bold text-2xl text-terracotta-600">$${product.price} <span class="text-xs font-sans text-stone-500 font-normal">MXN</span></span>
+                            </div>
+
+                            <!-- Purchase Options: 1 Pza, 1/2 Docena (6), Docena (12) -->
+                            <div class="grid grid-cols-3 gap-2">
+                                <button onclick="addToCart(${product.id}, 1)" class="py-2.5 px-2 rounded-xl bg-white hover:bg-terracotta-500 hover:text-white border border-cream-300 text-stone-800 text-xs font-medium transition-all shadow-sm flex flex-col items-center justify-center">
+                                    <span class="font-bold">+1 Pza</span>
+                                    <span class="text-[10px] opacity-80">$${product.price}</span>
+                                </button>
+                                <button onclick="addToCart(${product.id}, 6)" class="py-2.5 px-2 rounded-xl bg-cream-100 hover:bg-terracotta-500 hover:text-white border border-cream-300 text-stone-800 text-xs font-medium transition-all shadow-sm flex flex-col items-center justify-center">
+                                    <span class="font-bold">1/2 Docena</span>
+                                    <span class="text-[10px] opacity-80">$${product.price * 6}</span>
+                                </button>
+                                <button onclick="addToCart(${product.id}, 12)" class="py-2.5 px-2 rounded-xl bg-blush-100 hover:bg-terracotta-500 hover:text-white border border-blush-200 text-stone-800 text-xs font-medium transition-all shadow-sm flex flex-col items-center justify-center">
+                                    <span class="font-bold">1 Docena</span>
+                                    <span class="text-[10px] opacity-80">$${product.price * 12}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Add Item to Cart with MAX limit check (60 pieces)
+        function addToCart(productId, qtyToAdd = 1) {
+            const currentTotal = getTotalCartPieces();
+            if (currentTotal + qtyToAdd > MAX_PIECES_PER_ORDER) {
+                showToast(`⚠️ El límite por pedido es de ${MAX_PIECES_PER_ORDER} piezas. Tienes ${currentTotal} en tu pedido.`);
+                return;
+            }
+
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += qtyToAdd;
+            } else {
+                cart.push({ ...product, quantity: qtyToAdd });
+            }
+
+            updateCartUI();
+            openCart();
+            showToast(`✨ Se agregaron ${qtyToAdd} pza(s) de ${product.name}`);
+        }
+
+        // Update Cart UI
+        function updateCartUI() {
+            const totalPieces = getTotalCartPieces();
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            if (totalPieces > 0) {
+                cartBadge.innerText = totalPieces;
+                cartBadge.classList.remove('opacity-0');
+            } else {
+                cartBadge.classList.add('opacity-0');
+            }
+
+            limitIndicator.innerText = `${totalPieces} / ${MAX_PIECES_PER_ORDER} piezas`;
+            if (totalPieces >= MAX_PIECES_PER_ORDER) {
+                limitIndicator.className = "font-bold text-red-600";
+            } else {
+                limitIndicator.className = "font-bold text-terracotta-600";
+            }
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center py-12 space-y-3">
+                        <i class="fa-solid fa-basket-shopping text-4xl text-cream-300"></i>
+                        <p class="font-serif text-xl font-bold text-stone-700">Tu carrito está vacío</p>
+                        <p class="text-xs text-stone-500">Explora nuestro catálogo y agrega tus productos.</p>
+                    </div>
+                `;
+            } else {
+                cartItemsContainer.innerHTML = cart.map(item => `
+                    <div class="flex items-center gap-4 p-3 bg-white rounded-2xl border border-cream-200 shadow-sm">
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded-xl object-cover" onerror="this.src='https://placehold.co/100x100/E8DFD1/6E2E1E?text=Lua'">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-serif font-bold text-stone-900 truncate text-base">${item.name}</h4>
+                            <p class="text-xs text-terracotta-600 font-medium">$${item.price} MXN c/u</p>
+                            
+                            <div class="flex items-center gap-3 mt-2">
+                                <button onclick="changeQuantity(${item.id}, -1)" class="w-6 h-6 rounded-full bg-cream-100 hover:bg-cream-200 flex items-center justify-center text-xs font-bold text-stone-700">-</button>
+                                <span class="text-xs font-bold text-stone-800">${item.quantity} pza(s)</span>
+                                <button onclick="changeQuantity(${item.id}, 1)" class="w-6 h-6 rounded-full bg-cream-100 hover:bg-cream-200 flex items-center justify-center text-xs font-bold text-stone-700">+</button>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-serif font-bold text-stone-900 text-sm">$${item.price * item.quantity} MXN</p>
+                            <button onclick="removeFromCart(${item.id})" class="text-xs text-stone-400 hover:text-red-500 mt-2">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            cartTotal.innerText = `$${totalPrice.toFixed(2)} MXN`;
+        }
+
+        // Change Quantity
+        function changeQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                if (delta > 0 && getTotalCartPieces() + delta > MAX_PIECES_PER_ORDER) {
+                    showToast(`⚠️ Has alcanzado el límite máximo de ${MAX_PIECES_PER_ORDER} piezas por pedido.`);
+                    return;
+                }
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        // Remove from Cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        // Open & Close Cart Animations
+        function openCart() {
+            cartDrawer.classList.remove('hidden');
+            setTimeout(() => {
+                cartBackdrop.classList.remove('opacity-0');
+                cartPanel.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeCart() {
+            cartBackdrop.classList.add('opacity-0');
+            cartPanel.classList.add('translate-x-full');
+            setTimeout(() => {
+                cartDrawer.classList.add('hidden');
+            }, 300);
+        }
+
+        // WhatsApp Checkout
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) return;
+
+            const totalPieces = getTotalCartPieces();
+            let message = "¡Hola Lúa Dulce! 🌙 Quisiera realizar el siguiente pedido:\n\n";
+            cart.forEach(item => {
+                message += `• ${item.quantity} pza(s) de ${item.name} - $${item.price * item.quantity} MXN\n`;
+            });
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            message += `\n*Total de piezas: ${totalPieces} pzas*\n`;
+            message += `*Total Estimado: $${totalPrice.toFixed(2)} MXN*\n\n`;
+            message += "Quedo a la espera para confirmar disponibilidad y dirección de entrega. ¡Gracias!";
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // Event Listeners
+        openCartBtn.addEventListener('click', openCart);
+        closeCartBtn.addEventListener('click', closeCart);
+        cartBackdrop.addEventListener('click', closeCart);
+
+        // Category Filters
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-terracotta-500', 'text-white', 'shadow-sm');
+                    b.classList.add('bg-cream-100', 'text-stone-700');
+                });
+
+                btn.classList.remove('bg-cream-100', 'text-stone-700');
+                btn.classList.add('bg-terracotta-500', 'text-white', 'shadow-sm');
+
+                renderProducts(btn.dataset.category);
+            });
+        });
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Initialize Page
+        renderProducts();
+        updateCartUI();
+    </script>
+</body>
+</html>
